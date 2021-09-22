@@ -92,7 +92,7 @@ import Pop from '../utils/Pop.js'
 
 export default {
   props: {
-    house: { type: House, default: () => new House() }
+    house: { type: House, required: true }
   },
   setup(props) {
     const editable = ref({})
@@ -100,13 +100,17 @@ export default {
     watchEffect(() => {
       editable.value = { ...props.house }
     })
+
     return {
       editable,
       async handleSubmit() {
         try {
-          editable.value.id
-            ? await housesService.editHouse(editable.value)
-            : await housesService.createHouse(editable.value)
+          if (editable.value.id) {
+            await housesService.editHouse(editable.value)
+          } else {
+            await housesService.createHouse(editable.value)
+          }
+          editable.value = {}
         } catch (error) {
           Pop.toast(error.message, 'error')
         }

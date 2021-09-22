@@ -36,7 +36,7 @@
         {{ house.year }} {{ house.bedrooms }} {{ house.bathrooms }} {{ house.price }}
       </template>
       <template #modal-body>
-        <HouseFrom :house="house" />
+        <HouseForm :house="house" />
       </template>
     </Modal>
   </div>
