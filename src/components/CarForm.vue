@@ -65,7 +65,11 @@
           cancel
         </b>
       </button>
-      <button type="submit" class="btn text-primary text-uppercase selectable">
+      <button type="submit"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              class="btn text-primary text-uppercase selectable"
+      >
         <b>
           submit
         </b>
