@@ -14,4 +14,22 @@ class HousesService {
     const res = await api.get(`api/houses/${houseId}`)
     AppState.house = new House(res.data)
   }
+
+  async createHouse(house) {
+    const res = await api.post('api/houses', house)
+    AppState.houses.push(new House(res.data))
+  }
+
+  async editHouse(house) {
+    const res = await api.put(`api/houses/${house.id}`, house)
+    AppState.house = new House(res.data)
+  }
+
+  async removeHouse(houseId) {
+    await api.delete(`api/houses/${houseId}`)
+    AppState.house = null
+    AppState.houses.filter(h => h.id !== houseId)
+  }
 }
+
+export const housesService = new HousesService()
