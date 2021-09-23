@@ -33,7 +33,7 @@
     </div>
     <Modal id="edit-modal">
       <template #modal-title>
-        {{ house.year }} {{ house.bedrooms }} {{ house.bathrooms }} {{ house.price }}
+        Year: {{ house.year }} bed: {{ house.bedrooms }} bath: {{ house.bathrooms }}   ${{ house.price }}
       </template>
       <template #modal-body>
         <HouseForm :house="house" />
